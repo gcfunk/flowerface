@@ -37,12 +37,34 @@ var app = {
   },
   // Update DOM on a Received Event
   receivedEvent: function(id) {
-  var parentElement = document.getElementById(id);
+    var parentElement = document.getElementById(id);
 
-  parentElement.setAttribute('style', 'display:block;');
+    parentElement.setAttribute('style', 'display:block;');
 
-  console.log('Received Event: ' + id);
+    console.log('Received Event: ' + id);
+  },
+
+  getSavedPicture: function() {
+    navigator.camera.getPicture(app.onPictureSuccess, app.onPictureFail, { quality: 50,
+      destinationType: Camera.DestinationType.FILE_URI, sourceType: Camera.PictureSourceType.PHOTOLIBRARY });
+  },
+
+  getCameraPicture: function() {
+    navigator.camera.getPicture(app.onPictureSuccess, app.onPictureFail, { quality: 50,
+      destinationType: Camera.DestinationType.FILE_URI });
+  },
+
+  onPictureSuccess: function(imageURI) {
+    var image = document.getElementById('myFace');
+    image.src = imageURI;
+  },
+
+  onPictureFail: function(message) {
+    setTimeout(function() {
+      alert('Failed because: ' + message);
+    }, 0);
   }
+
 };
 
 app.initialize();
