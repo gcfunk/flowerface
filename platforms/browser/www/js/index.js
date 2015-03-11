@@ -46,7 +46,7 @@ var app = {
 
   getSavedPicture: function() {
     navigator.camera.getPicture(app.onPictureSuccess, app.onPictureFail, { quality: 50,
-      destinationType: Camera.DestinationType.FILE_URI, sourceType: Camera.PictureSourceType.PHOTOLIBRARY });
+      destinationType: Camera.DestinationType.DATA_URL, sourceType: Camera.PictureSourceType.PHOTOLIBRARY });
   },
 
   getCameraPicture: function() {
@@ -54,9 +54,9 @@ var app = {
       destinationType: Camera.DestinationType.FILE_URI });
   },
 
-  onPictureSuccess: function(imageURI) {
+  onPictureSuccess: function(imageData) {
     var image = document.getElementById('myFace');
-    image.src = imageURI;
+    image.src = "data:image/jpeg;base64," + imageData;
   },
 
   onPictureFail: function(message) {
