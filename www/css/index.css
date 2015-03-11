@@ -48,6 +48,7 @@ body {
 /* Portrait layout (default) */
 .app {
     text-align:center;
+    height: 100%;
 }
 
 /* Landscape layout (with min-width) */
@@ -106,6 +107,10 @@ h1 {
     height: 90%;
 }
 
+.btnBar {
+    display: none;
+}
+
 .btn {
     background: #3498db;
     background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
@@ -118,7 +123,7 @@ h1 {
     border-radius: 28px;
     font-family: Arial;
     color: #ffffff;
-    font-size: 20px;
+    font-size: 10px;
     padding: 10px 20px 10px 20px;
     text-decoration: none;
 }
