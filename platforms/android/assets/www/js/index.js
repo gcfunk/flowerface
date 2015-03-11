@@ -45,12 +45,26 @@ var app = {
   },
 
   getSavedPicture: function() {
-    alert("get saved picture");
+    navigator.camera.getPicture(app.onPictureSuccess, app.onPictureFail, { quality: 50,
+      destinationType: Camera.DestinationType.FILE_URI, sourceType: Camera.PictureSourceType.PHOTOLIBRARY });
   },
 
   getCameraPicture: function() {
-    alert("get camera picture");
+    navigator.camera.getPicture(app.onPictureSuccess, app.onPictureFail, { quality: 50,
+      destinationType: Camera.DestinationType.FILE_URI });
+  },
+
+  onPictureSuccess: function(imageURI) {
+    var image = document.getElementById('myFace');
+    image.src = imageURI;
+  },
+
+  onPictureFail: function(message) {
+    setTimeout(function() {
+      alert('Failed because: ' + message);
+    }, 0);
   }
+
 };
 
 app.initialize();
